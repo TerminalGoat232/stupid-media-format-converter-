@@ -173,7 +173,9 @@ class Main(qtw.QWidget):
 			#print(f"ffmpeg -i {self.ff} {self.final}"+"(x)"+ f"{self.getcc}") 
 			os.system(f"ffmpeg -i {self.ff} {self.final}"+"x"+ f"{self.getcc}")
 	def ffmpeg_installbutt(self):
-		passw = '1029384756'
+		passw = ""
+		with open("sudopass.txt","r") as p:
+			for cv in p: passw += p
 		os.system('echo %s|sudo -S %s' % (passw, 'apt install ffmpeg'))
 	def browse(self):
 		self.anim11 = qtc.QPropertyAnimation(self.Browsebut, b"pos")
